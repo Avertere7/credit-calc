@@ -1,1 +1,39 @@
-<div class="container">Hello world</div>
+<div class="header-container">
+    <div class="title">
+        Take loan
+    </div>
+    <div class="subtitle">
+        <pre>
+        Use our loan calculator to help you make an informed decision about buying a new house.
+        The calculations concern different Loans and are for information purposes only.
+        Choose desired loan
+        </pre>
+    </div>
+</div>
+
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab></mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span class="material-icons tab-icons">home</span>
+            House Loan
+        </ng-template>
+        Content
+    </mat-tab>
+    <mat-tab disabled>
+        <ng-template mat-tab-label>
+            <span class="material-icons tab-icons">
+                directions_car
+            </span>
+            Car Loan
+        </ng-template>
+    </mat-tab>
+    <mat-tab disabled>
+        <ng-template mat-tab-label>
+            <span class="material-icons tab-icons">
+                payments
+            </span>
+            Open Loan
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
