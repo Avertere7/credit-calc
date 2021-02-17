@@ -1,0 +1,48 @@
+<div class="tab-container">
+    <div></div>
+    <div class="info-container">
+        <div>
+            <mat-label>Loan amount</mat-label>
+            <div class="input-container">
+                <mat-slider class="full-width" thumbLabel [displayWith]="formatLabel" [(ngModel)]=" loanAmount"
+                    tickInterval="10000" min="1" max="2500000">
+                </mat-slider>
+                <mat-form-field class="input-value">
+                    <mat-label>Loan amount</mat-label>
+                    <input matInput type="number" [(ngModel)]="loanAmount">
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <mat-label>Repayment period in years</mat-label>
+            <div class="input-container">
+                <mat-slider class="full-width" thumbLabel [displayWith]="formatLabel" [(ngModel)]=" loanYear"
+                    tickInterval="1" min="1" max="35">
+                </mat-slider>
+                <mat-form-field class="input-value">
+                    <mat-label>Repayment period in years</mat-label>
+                    <input matInput type="number" [(ngModel)]="loanYear">
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <mat-label>Interest rate</mat-label>
+            <div class="input-container">
+                <mat-slider class="full-width" thumbLabel disabled value=3.5 tickInterval="1" min="1" max="10">
+                </mat-slider>
+                <mat-form-field class="input-value">
+                    <mat-label>Interest rate</mat-label>
+                    <input matInput type="number" value=3.5 disabled>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="chart-container">
+        <div class="chart-wrapper">
+            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [legend]="lineChartLegend"
+                [chartType]="lineChartType" [plugins]="lineChartPlugins">
+            </canvas>
+        </div>
+    </div>
+    <div></div>
+</div>

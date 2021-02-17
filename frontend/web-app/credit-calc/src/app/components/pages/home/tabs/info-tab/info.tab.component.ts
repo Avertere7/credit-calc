@@ -2,8 +2,8 @@
 import { Component } from "@angular/core";
 
 @Component({
-    template: "<div class='title'><span class='material-icons icon'>info</span>Chooose loan</div>",
-    styles: [`
+  template: "<div class='title'><span class='material-icons icon'>info</span>Chooose loan</div>",
+  styles: [`
     .title {
         text-align: center;
          margin: 100px auto;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tab } from "../../../models/tab.model";
-import { InfoComponent } from './tabs/info.tab.component';
-import { ExampleComponent } from './tabs/example.component';
+import { InfoComponent } from './tabs/info-tab/info.tab.component';
+import { HouseLoanComponent } from './tabs/house-tab/house-loan.component';
 
 @Component({
   selector: 'app-home',
@@ -13,16 +13,14 @@ import { ExampleComponent } from './tabs/example.component';
 export class HomeComponent implements OnInit {
   public tabs: Tab[] = [
     new Tab(InfoComponent, '', ''),
-    new Tab(ExampleComponent, "House Loan", 'home'),
-    new Tab(ExampleComponent, "Car Loan", 'directions_car'),
-    new Tab(ExampleComponent, "Open Loan", 'payments')
+    new Tab(HouseLoanComponent, 'House Loan', 'home'),
+    new Tab(HouseLoanComponent, 'Car Loan', 'directions_car', false),
+    new Tab(HouseLoanComponent, 'Open Loan', 'payments', false)
   ];
   selectedTab = 0;
 
 
-  constructor(
-
-  ) { }
+  constructor() { }
 
   public async ngOnInit(): Promise<any> {
   }

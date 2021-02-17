@@ -3,18 +3,14 @@
         Take loan
     </div>
     <div class="subtitle">
-        <pre>
         Use our loan calculator to help you make an informed decision about buying a new house.
         The calculations concern different Loans and are for information purposes only.
         Choose desired loan
-        </pre>
     </div>
 </div>
 
-
-
 <mat-tab-group class="main-tab-group mt-2" [selectedIndex]="selectedTab" mat-align-tabs="center">
-    <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
+    <mat-tab *ngFor="let tab of tabs; let tabIndex = index" [disabled]=!tab.active>
         <ng-template mat-tab-label>
             <span class="material-icons tab-icons">{{tab.icon}}</span>
             {{ tab.title }}
