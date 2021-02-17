@@ -1,0 +1,39 @@
+@import '../../../../../scss/variables.scss';
+
+.tab-container {
+    padding: 30px 50px 30px 50px;
+    display: grid;
+    grid-template-columns: 20% 30% 30% 20%;
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 27px;
+
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.input-value {
+    width: 100%;
+}
+
+.mat-slider {
+    width: 100%;
+}
+
+
+::ng-deep .mat-accent .mat-slider-thumb {
+    background-color: $navbar-color;
+}
+
+::ng-deep .mat-accent .mat-slider-thumb-label {
+    background-color: $navbar-color;
+}
+
+::ng-deep .mat-accent .mat-slider-track-fill {
+    background-color: $navbar-color;
+}

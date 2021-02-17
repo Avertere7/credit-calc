@@ -1,5 +1,6 @@
 @import './app/scss/variables.scss';
 @import '~@angular/material/theming';
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 $custom-typography: mat-typography-config($font-family: 'Lato');
 @include mat-core($custom-typography);
