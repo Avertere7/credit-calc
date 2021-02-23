@@ -10,16 +10,15 @@ import { Color, Label } from 'ng2-charts';
 })
 export class HouseLoanComponent {
   public loanAmount = 0;
-  public loanYear = 0;
-  lineChartData: ChartDataSets[] = [
-    { data: [85, 72], backgroundColor: ['#c6dff5', '#060144'] },
-  ];
-
-  lineChartLabels: Label[] = ['Principal Amount', 'Interest amount'];
-
-  lineChartLegend = true;
-  lineChartPlugins = [];
-  lineChartType = 'pie';
+  public loanYears = 1;
+  public total;
+  public interest;
+  public interestRate = 3.5;
+  chartData: ChartDataSets[] = [{ data: [0, 0], backgroundColor: ['#c6dff5', '#060144'] }];
+  chartLabels: Label[] = ['Principal Amount', 'Interest amount'];
+  chartOptionsLables = { legend: { position: 'bottom' } };
+  chartLegend = true;
+  chartType = 'pie';
 
   formatLabel(value: number): string {
     if (value >= 1000 && value <= 999999) {
@@ -29,4 +28,22 @@ export class HouseLoanComponent {
     }
     return value.toString();
   }
+
+  calculateLoan(): void {
+    if (this.loanAmount && this.interestRate && this.loanYears) {
+      // compute the monthly payment figure
+      const rate = Math.pow(1 + (this.interestRate / 100), this.loanYears); // rate between years and interest
+      const yearly = (this.loanAmount * rate * (this.interestRate / 100)) / (rate - 1);
+      if (isFinite(yearly)) { // if user is nice and put correct data
+        this.total = (yearly * this.loanYears).toFixed(2);
+        this.interest = ((yearly * this.loanYears) - this.loanAmount).toFixed(2)
+      }
+    }
+    this.updateChart();
+  }
+  updateChart(): void {
+    this.chartData[0].data = [this.loanAmount, this.interest];
+  }
+
+
 }

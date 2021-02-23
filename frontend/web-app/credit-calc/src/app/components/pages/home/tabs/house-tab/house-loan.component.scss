@@ -17,6 +17,20 @@
     grid-template-columns: 80% 20%;
 }
 
+.chart-title {
+    width: 100%;
+    margin: 5px 0px;
+    text-align: center;
+}
+
+.chart-wrapper {
+    text-align: center;
+
+    position: relative;
+    height: 14vh;
+    width: 28vw;
+}
+
 .input-value {
     width: 100%;
 }
