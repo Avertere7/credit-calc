@@ -7,23 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Dtos\External\**" />
-    <Compile Remove="Dtos\Internal\**" />
     <Compile Remove="Models\External\**" />
     <Compile Remove="Models\Internal\**" />
     <Compile Remove="Repositories\**" />
-    <Content Remove="Dtos\External\**" />
-    <Content Remove="Dtos\Internal\**" />
     <Content Remove="Models\External\**" />
     <Content Remove="Models\Internal\**" />
     <Content Remove="Repositories\**" />
-    <EmbeddedResource Remove="Dtos\External\**" />
-    <EmbeddedResource Remove="Dtos\Internal\**" />
     <EmbeddedResource Remove="Models\External\**" />
     <EmbeddedResource Remove="Models\Internal\**" />
     <EmbeddedResource Remove="Repositories\**" />
-    <None Remove="Dtos\External\**" />
-    <None Remove="Dtos\Internal\**" />
     <None Remove="Models\External\**" />
     <None Remove="Models\Internal\**" />
     <None Remove="Repositories\**" />
@@ -55,8 +47,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Dtos\" />
-	  <Folder Include="Models\" />
 	  <Folder Include="Resources\" />
 	</ItemGroup>
 

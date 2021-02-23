@@ -5,23 +5,23 @@
             <mat-label>Loan amount</mat-label>
             <div class="input-container">
                 <mat-slider class="full-width" thumbLabel [displayWith]="formatLabel" [(ngModel)]=" loanAmount"
-                    tickInterval="10000" min="1" max="2500000">
+                    tickInterval="10000" min="1" max="2500000" (ngModelChange)=calculateLoan()>
                 </mat-slider>
                 <mat-form-field class="input-value">
                     <mat-label>Loan amount</mat-label>
-                    <input matInput type="number" [(ngModel)]="loanAmount">
+                    <input matInput type="number" [(ngModel)]="loanAmount" (ngModelChange)=calculateLoan()>
                 </mat-form-field>
             </div>
         </div>
         <div>
             <mat-label>Repayment period in years</mat-label>
             <div class="input-container">
-                <mat-slider class="full-width" thumbLabel [displayWith]="formatLabel" [(ngModel)]=" loanYear"
-                    tickInterval="1" min="1" max="35">
+                <mat-slider class="full-width" thumbLabel [displayWith]="formatLabel" [(ngModel)]=" loanYears"
+                    tickInterval="1" min="1" max="35" (ngModelChange)=calculateLoan()>
                 </mat-slider>
                 <mat-form-field class="input-value">
                     <mat-label>Repayment period in years</mat-label>
-                    <input matInput type="number" [(ngModel)]="loanYear">
+                    <input matInput type="number" [(ngModel)]="loanYears" (ngModelChange)=calculateLoan()>
                 </mat-form-field>
             </div>
         </div>
@@ -38,9 +38,12 @@
         </div>
     </div>
     <div class="chart-container">
+        <div class="chart-title">
+            <h3>Intrest rate chart </h3>
+        </div>
         <div class="chart-wrapper">
-            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [legend]="lineChartLegend"
-                [chartType]="lineChartType" [plugins]="lineChartPlugins">
+            <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [legend]="chartLegend"
+                [options]="chartOptionsLables" [chartType]="chartType">
             </canvas>
         </div>
     </div>
