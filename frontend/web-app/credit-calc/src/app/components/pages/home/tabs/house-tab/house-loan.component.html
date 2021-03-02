@@ -4,24 +4,24 @@
         <div>
             <mat-label>Loan amount</mat-label>
             <div class="input-container">
-                <mat-slider class="full-width" thumbLabel [displayWith]="formatLabel" [(ngModel)]=" loanAmount"
+                <mat-slider class="full-width" thumbLabel [displayWith]="formatLabel" [(ngModel)]=" loan.loanAmount"
                     tickInterval="10000" min="1" max="2500000" (ngModelChange)=calculateLoan()>
                 </mat-slider>
                 <mat-form-field class="input-value">
                     <mat-label>Loan amount</mat-label>
-                    <input matInput type="number" [(ngModel)]="loanAmount" (ngModelChange)=calculateLoan()>
+                    <input matInput type="number" [(ngModel)]="loan.loanAmount" (ngModelChange)=calculateLoan()>
                 </mat-form-field>
             </div>
         </div>
         <div>
             <mat-label>Repayment period in years</mat-label>
             <div class="input-container">
-                <mat-slider class="full-width" thumbLabel [displayWith]="formatLabel" [(ngModel)]=" loanYears"
+                <mat-slider class="full-width" thumbLabel [displayWith]="formatLabel" [(ngModel)]=" loan.loanYears"
                     tickInterval="1" min="1" max="35" (ngModelChange)=calculateLoan()>
                 </mat-slider>
                 <mat-form-field class="input-value">
                     <mat-label>Repayment period in years</mat-label>
-                    <input matInput type="number" [(ngModel)]="loanYears" (ngModelChange)=calculateLoan()>
+                    <input matInput type="number" [(ngModel)]="loan.loanYears" (ngModelChange)=calculateLoan()>
                 </mat-form-field>
             </div>
         </div>
@@ -47,5 +47,25 @@
             </canvas>
         </div>
     </div>
-    <div></div>
+    <div class="chart-info">
+        <mat-label>Total</mat-label>
+        <div class="input-container">
+            <mat-form-field class="input-value">
+                <input matInput type="number" [ngModel]="round(loan.total)" disabled>
+            </mat-form-field>
+        </div>
+        <mat-label>Interest amount</mat-label>
+        <div class="input-container">
+            <mat-form-field class="input-value">
+                <input matInput type="number" [ngModel]="round(loan.interest)" disabled>
+            </mat-form-field>
+        </div>
+        <mat-label>Year rate</mat-label>
+        <div class="input-container">
+            <mat-form-field class="input-value">
+                <input matInput type="number" [ngModel]="round(loan.yearRate)" disabled>
+            </mat-form-field>
+        </div>
+
+    </div>
 </div>

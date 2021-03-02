@@ -3,13 +3,12 @@
 .tab-container {
     padding: 30px 50px 30px 50px;
     display: grid;
-    grid-template-columns: 20% 30% 30% 20%;
+    grid-template-columns: 20% 30% 20% 10%;
 }
 
 .full-width {
     width: 100%;
     margin-top: 27px;
-
 }
 
 .input-container {
@@ -19,16 +18,20 @@
 
 .chart-title {
     width: 100%;
-    margin: 5px 0px;
     text-align: center;
+    margin: 10px 55px;
 }
 
 .chart-wrapper {
     text-align: center;
-
+    padding-right: 50px;
     position: relative;
     height: 14vh;
     width: 28vw;
+}
+
+.chart-info {
+    margin-left: 50px;
 }
 
 .input-value {

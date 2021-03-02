@@ -1,24 +1,25 @@
 
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { Loan } from '../../../../../models/loan.model';
 
 @Component({
   selector: 'app-house-loan',
   templateUrl: './house-loan.component.html',
   styleUrls: ['./house-loan.component.scss']
 })
-export class HouseLoanComponent {
-  public loanAmount = 0;
-  public loanYears = 1;
-  public total;
-  public interest;
-  public interestRate = 3.5;
+export class HouseLoanComponent implements OnInit {
+  public loan = new Loan();
   chartData: ChartDataSets[] = [{ data: [0, 0], backgroundColor: ['#c6dff5', '#060144'] }];
   chartLabels: Label[] = ['Principal Amount', 'Interest amount'];
   chartOptionsLables = { legend: { position: 'bottom' } };
   chartLegend = true;
   chartType = 'pie';
+
+  ngOnInit(): void {
+    this.loan.interestRate = 3.5;
+  }
 
   formatLabel(value: number): string {
     if (value >= 1000 && value <= 999999) {
@@ -30,20 +31,21 @@ export class HouseLoanComponent {
   }
 
   calculateLoan(): void {
-    if (this.loanAmount && this.interestRate && this.loanYears) {
+    if (this.loan.loanAmount && this.loan.interestRate && this.loan.loanYears) {
       // compute the monthly payment figure
-      const rate = Math.pow(1 + (this.interestRate / 100), this.loanYears); // rate between years and interest
-      const yearly = (this.loanAmount * rate * (this.interestRate / 100)) / (rate - 1);
-      if (isFinite(yearly)) { // if user is nice and put correct data
-        this.total = (yearly * this.loanYears).toFixed(2);
-        this.interest = ((yearly * this.loanYears) - this.loanAmount).toFixed(2)
+      const rate = Math.pow(1 + (this.loan.interestRate / 100), this.loan.loanYears); // rate between years and interest
+      this.loan.yearRate = (this.loan.loanAmount * rate * (this.loan.interestRate / 100)) / (rate - 1);
+      if (isFinite(this.loan.yearRate)) { // if user is nice and put correct data
+        this.loan.total = this.loan.yearRate * this.loan.loanYears;
+        this.loan.interest = ((this.loan.yearRate * this.loan.loanYears) - this.loan.loanAmount);
       }
     }
     this.updateChart();
   }
   updateChart(): void {
-    this.chartData[0].data = [this.loanAmount, this.interest];
+    this.chartData[0].data = [this.round(this.loan.loanAmount), this.round(this.loan.interest)];
   }
 
-
+  round = (num: number): number => Math.round((num + Number.EPSILON) * 100) / 100;
 }
+
