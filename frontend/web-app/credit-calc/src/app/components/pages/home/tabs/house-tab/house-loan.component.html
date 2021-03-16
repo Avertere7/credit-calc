@@ -68,4 +68,11 @@
         </div>
 
     </div>
+
+</div>
+<div class="generate-btn" *ngIf='loan.total'>
+    <button mat-raised-button color="primary" *ngIf='!loading' (click)='createLoanSchedule()'> Generate
+        schedule</button>
+    <mat-progress-spinner class="example-margin" *ngIf='loading' color="primary" mode="indeterminate">
+    </mat-progress-spinner>
 </div>

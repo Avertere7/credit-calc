@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WebApi.Interfaces;
 
 namespace WebApi.Models
@@ -9,10 +7,13 @@ namespace WebApi.Models
     public class HouseLoan : ILoan
     {
         public double LoanAmount { get; set; }
-        public int RepaymentPeriod { get; set; }
+        public int LoanYears { get; set; }
         public double InterestRate { get; set; }
+        public double YearRate { get; set; }
+        public double Total { get; set; }
+        public double Interest { get; set; }
 
-        public LoanSchedule CreateLoanSchedule()
+        public List<LoanScheduleRow> CreateLoanSchedule()
         {
             throw new NotImplementedException();
         }

@@ -9,9 +9,9 @@ namespace WebApi.Interfaces
     public interface ILoan
     {
         public double LoanAmount { get; set; }
-        public int RepaymentPeriod{ get; set; }
+        public int LoanYears { get; set; }
         public double InterestRate { get; set; }
-        public LoanSchedule CreateLoanSchedule();
+        public List<LoanScheduleRow> CreateLoanSchedule();
 
     }
 }

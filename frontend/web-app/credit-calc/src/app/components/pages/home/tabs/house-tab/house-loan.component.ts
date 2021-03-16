@@ -2,6 +2,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { LoanService } from "src/app/services/loan.service";
 import { Loan } from '../../../../../models/loan.model';
 
 @Component({
@@ -15,7 +16,12 @@ export class HouseLoanComponent implements OnInit {
   chartLabels: Label[] = ['Principal Amount', 'Interest amount'];
   chartOptionsLables = { legend: { position: 'bottom' } };
   chartLegend = true;
+  loading = false;
   chartType = 'pie';
+
+  constructor(
+    private readonly loanService: LoanService
+  ) { }
 
   ngOnInit(): void {
     this.loan.interestRate = 3.5;
@@ -41,6 +47,12 @@ export class HouseLoanComponent implements OnInit {
       }
     }
     this.updateChart();
+  }
+
+  async createLoanSchedule(): Promise<void> {
+    this.loading = true;
+    const loanSchedule = await this.loanService.getLoanSchedule(this.loan);
+    this.loading = false;
   }
   updateChart(): void {
     this.chartData[0].data = [this.round(this.loan.loanAmount), this.round(this.loan.interest)];

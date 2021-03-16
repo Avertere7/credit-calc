@@ -20,6 +20,12 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var config = Configuration.GetSection("configuration").Get<Configuration>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyCors",
+                                  builder =>{ builder.WithOrigins(config.Urls.Main).AllowAnyHeader().AllowAnyMethod();});
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddMvc().AddNewtonsoftJson();
             services.AddControllers();
@@ -31,7 +37,7 @@ namespace WebApi
             app.UseDeveloperExceptionPage();
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseCors();
+            app.UseCors("MyCors");
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
 

@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
-    public class LoanSchedule
+    public class LoanScheduleRow
     {
-
+        public int Year { get; set; }
+        public double YearRate { get; set; }
     }
 }
